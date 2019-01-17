@@ -34,20 +34,23 @@ main:
  in r28,__SP_L__
  in r29,__SP_H__
 
- ldi r0, 0b01111111
- ldi r1, 0x0F
- out DDRB, r0
- out PORTB, r1
+ ldi r16, 0b01111111
+ ldi r17, 0x0F
+ out DDRB, r16
+ out PORTB, r17
+
+ ldi r16, 0x00
+ sts 0x0100, r16
  nop
 
- ldi r0, 0b00000000
- ldi r1, 0b00000101
- ldi r2, 0b00000001
- out TCCR0A, r0
- out TCCR0B, r1
+ ldi r16, 0b00000000
+ ldi r17, 0b00000101
+ ldi r18, 0b00000001
+ out TCCR0A, r16
+ out TCCR0B, r17
  ldi r30, lo8(TIMSK0)
  ldi r31, 0
- st Z, r2
+ st Z, r18
  sei
 
 .end:

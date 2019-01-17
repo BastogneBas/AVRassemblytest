@@ -12,16 +12,18 @@ TCCR0B = 0x25
 TIMSK0 = 0x6E
 	.text
 
+/*	Timer0 overflow vector	*/
 .global __vector_16
 	.type __vector_16, @function
 __vector_16:
+/*	swap nibbles in PORTB	*/
 	in	r0,	PORTB
 	swap r0
 	out	PORTB,	r0
 	reti
 	.size	__vector_16, .-__vector_16
 
-
+/*	main	*/
 .global	main
 	.type	main, @function
 main:
@@ -30,20 +32,24 @@ main:
 	in r28,__SP_L__
 	in r29,__SP_H__
 
-	ldi	r0, 	0b01111111
-	ldi	r1, 	0x0F
-	out	DDRB,	r0
-	out PORTB,	r1
+/*	load and store values in PORTB and DDRB	*/
+	ldi	r16, 	0b01111111
+	ldi	r17, 	0x0F
+	out	DDRB,	r16
+	out PORTB,	r17
+	
+	ldi	r16,	0x00
+	sts	0x0100,	r16
 	nop
 	
-	ldi	r0,	0b00000000
-	ldi	r1,	0b00000101
-	ldi r2,	0b00000001
-	out	TCCR0A,	r0
-	out TCCR0B, r1
+	ldi	r16,	0b00000000
+	ldi	r17,	0b00000101
+	ldi r18,	0b00000001
+	out	TCCR0A,	r16
+	out TCCR0B, r17
 	ldi	r30,	lo8(TIMSK0)
 	ldi r31,	0
-	st	Z,		r2
+	st	Z,		r18
 	sei
 
 .end:
