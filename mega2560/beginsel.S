@@ -18,9 +18,7 @@ main:
 	push r29
 	in r28,__SP_L__
 	in r29,__SP_H__
-/* prologue: function */
-/* frame size = 0 */
-/* stack size = 2 */
+
 	ldi	r16, 	0b01111111
 	ldi	r17, 	0x0F
 	out	DDRB,	r16
@@ -36,22 +34,18 @@ main:
 	ldi r31,	0
 	st	Z,		r18
 	sei
-/*.L__stack_usage = 2
-	ldi r24,lo8(42)
-	ldi r25,0
-	movw r30,r24
-	st Z,__zero_reg__
-	ldi r24,0
-	ldi r25,0 */
-/* epilogue start */
-/*	pop r29
-	pop r28 */
+	.size	main, .-main
+
 end:sleep
 	ret
-TIM0_OVF:
+
+
+.global __vector_23
+	.type __vector_23, @function
+__vector_23:
 	in	r16,	PORTB
 	swap r16
 	out	PORTB,	r16
 	reti
-	.size	main, .-main
+	.size	__vector_23, .-__vector_23
 	.ident	"GCC: (GNU) 8.2.0"

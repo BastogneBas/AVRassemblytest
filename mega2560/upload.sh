@@ -9,4 +9,4 @@ avr-objcopy -O binary build-mega-atmega2560/$PROJNAME.elf build-mega-atmega2560/
 avr-objcopy -O ihex -R .eeprom build-mega-atmega2560/$PROJNAME.elf build-mega-atmega2560/$PROJNAME.hex
 avr-size --mcu=atmega2560 -C --format=avr build-mega-atmega2560/$PROJNAME.elf
 
-avrdude -q -V -p atmega2560 -C /home/bas/arduino/hardware/tools/avr/etc/avrdude.conf -D -c wiring -b 115200 -P /dev/ttyACM0 -U flash:w:build-mega-atmega2560/$PROJNAME.hex:i
+/home/bas/arduino/hardware/tools/avr/bin/avrdude -q -V -p atmega2560 -C /home/bas/arduino/hardware/tools/avr/etc/avrdude.conf -D -c wiring -b 115200 -P /dev/ttyACM0 -U flash:w:build-mega-atmega2560/$PROJNAME.hex:i
