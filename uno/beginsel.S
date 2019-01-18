@@ -50,7 +50,7 @@ main:
 	in r29,__SP_H__
 
 /*	load and store values in PORTB and DDRB	*/
-	ldi	r16, 	0b01111111			/*	Load 0b01111111 to r16		*/
+	ldi	r16, 	0b11111111			/*	Load 0b01111111 to r16		*/
 	ldi	r17, 	0x0F				/*	Load 0b00001111 to r17		*/
 	out	DDRB,	r16					/*	Put r16 in DDRB				*/
 	out PORTB,	r17					/*	Put r17 in PORTB			*/
