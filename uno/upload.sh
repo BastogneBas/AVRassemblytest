@@ -10,4 +10,4 @@ avr-objcopy -O binary $BUILDFOLDER/$PROJNAME.elf $BUILDFOLDER/$PROJNAME.bin
 avr-objcopy -O ihex -R .eeprom $BUILDFOLDER/$PROJNAME.elf $BUILDFOLDER/$PROJNAME.hex
 avr-size --mcu=atmega328p -C --format=avr $BUILDFOLDER/$PROJNAME.elf
 
-/home/bas/arduino/hardware/tools/avr/bin/avrdude -v -p atmega328p -c arduino -C /home/bas/arduino/hardware/tools/avr/etc/avrdude.conf -D -b 57600 -P /dev/ttyACM0 -U flash:w:$BUILDFOLDER/$PROJNAME.hex:i
+avrdude -v -p atmega328p -c usbasp -D -P usb -U flash:w:$BUILDFOLDER/$PROJNAME.hex:i

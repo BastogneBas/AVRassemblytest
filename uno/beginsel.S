@@ -23,7 +23,7 @@ __vector_16:
 	sts	0x0100,	r16
 
 /*	Check if equal to 10, if not, go to v16end	*/
-	cpi	r16,	10
+	cpi	r16,	7
 	brne v16end
 
 /*	Store 0 to the value in the SRAM	*/
